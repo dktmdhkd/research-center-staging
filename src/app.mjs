@@ -1,7 +1,7 @@
 import { getMarketSnapshot } from './market-data.mjs';
 import { homeContent } from './content/home-content.mjs';
 import { reports } from './content/report-content.mjs';
-import { NEWS_CATEGORIES, newsItems } from './content/news-content.mjs';
+import { NEWS_CATEGORIES, NEWS_INDUSTRIES, newsItems } from './content/news-content.mjs';
 import { renderHome } from './pages/home-page.mjs';
 import { createSparklineGeometry, formatMarketValue, renderMarket } from './pages/market-page.mjs';
 import { createReportPage, sortReports } from './pages/report-page.mjs';
@@ -67,6 +67,7 @@ function init() {
   reportPage.showList();
   createNewsPage(document.querySelector('#news'), {
     categories: NEWS_CATEGORIES,
+    industries: NEWS_INDUSTRIES,
     items: newsItems,
   });
   bindRouteButtons();
