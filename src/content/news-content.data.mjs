@@ -613,6 +613,69 @@ export const newsData = {
       ],
       "sourceUrl": "https://n.news.naver.com/mnews/article/215/0001261561",
       "status": "published"
+    },
+    {
+      "id": "n41",
+      "category": "경제",
+      "industry": null,
+      "date": "2026.08.07",
+      "title": "엔화, 미 고용지표에 급등…시장은 추가 개입 신호 주시",
+      "source": "Bloomberg",
+      "oneLineSummary": "예상보다 부진한 미 고용지표 발표 이후 엔화가 달러 대비 급등했으나, 주간 기준으로는 소폭 약세로 마감했습니다.",
+      "mainContentParagraphs": [
+        "예상보다 부진했던 금요일 미국 고용보고서 발표 이후 엔화가 약세를 보인 달러 대비 급등했으며, 시장은 당국이 엔화에 대한 추가 개입을 준비하는지 신호를 주시하고 있다.",
+        "엔화는 이날 0.4% 상승해 뉴욕 시간 오후 5시 기준 달러당 157.76엔에 거래됐다. 이러한 상승에도 불구하고, 일본과 미국 당국의 개입이 이어진 변동성 장세 이후 엔화는 주간 기준으로는 시작 시점보다 소폭 약세로 마감했다."
+      ],
+      "sourceUrl": "https://www.bloomberg.com/news/articles/2026-08-07/yen-surrenders-nearly-half-its-gains-from-us-japan-intervention",
+      "status": "published"
+    },
+    {
+      "id": "n42",
+      "category": "산업",
+      "industry": "소프트웨어",
+      "date": "2026.08.08",
+      "title": "OpenAI, 사이버보안 우려로 신형 'Astra' 모델 개발 일부 중단",
+      "source": "Bloomberg",
+      "oneLineSummary": "OpenAI가 미공개 차세대 모델 'Astra'가 사이버보안 위험 임계치에 도달할 가능성을 배제할 수 없다며 관련 내부 개발을 일부 중단했습니다.",
+      "mainContentParagraphs": [
+        "OpenAI가 자사의 차기 인공지능 모델 중 하나에 대한 내부 작업 일부를 일시 중단하고, 해당 시스템이 사이버보안 관련 작업에 훨씬 더 능숙해진 것으로 확인된 이후 더 엄격한 안전장치를 도입하기로 했다.",
+        "ChatGPT 개발사는 금요일, 아직 공개되지 않은 Astra 모델이 OpenAI의 \"핵심 사이버보안 임계치(critical cybersecurity threshold)\"에 도달할 가능성을 \"배제할 수 없다\"고 밝혔다. 이는 사람의 개입 없이도 제로데이 취약점을 식별하고 개발할 수 있는 수준을 의미한다."
+      ],
+      "sourceUrl": "https://www.bloomberg.com/news/articles/2026-08-07/openai-pauses-some-work-on-new-astra-model-over-cyber-concerns",
+      "status": "published"
+    },
+    {
+      "id": "n43",
+      "category": "경제",
+      "industry": null,
+      "date": "2026.08.07",
+      "title": "이번 고용보고서, 투자자들에게는 사활이 걸린 이슈",
+      "source": "Bloomberg (Markets Daily)",
+      "oneLineSummary": "7월 고용보고서 결과가 강하든 약하든 연준의 다음 행보에 대한 시장 해석에 따라 증시에 부담이 될 수 있다는 분석입니다.",
+      "mainContentParagraphs": [
+        "오늘 발표되는 7월 고용보고서의 '좋은 소식'이 시장에는 '나쁜 소식'이 될 수 있다.",
+        "지표가 지나치게 강하게 나올 경우 인플레이션을 부추기는 뜨거운 노동시장으로 해석되어 연준이 금리를 인상해야 한다는 우려를 키울 수 있다. 반대로 예상보다 약한 결과는 이러한 우려를 완화시킬 것이다.",
+        "\"만약 당신이 연준 의장이라면, 너무 강하지도 너무 약하지도 않은 골디락스 고용지표를 원할 것\"이라고 헤이버포드 트러스트의 행크 스미스가 말했다."
+      ],
+      "sourceUrl": "https://www.bloomberg.com/news/newsletters/2026-08-07/this-job-reports-has-high-stakes-for-investors",
+      "status": "published"
+    },
+    {
+      "id": "n44",
+      "category": "정치",
+      "industry": null,
+      "date": "2026.08.07",
+      "title": "미국, 호르무즈 해협 타결 임박 전망…수니파 3국 상호방위협정 체결",
+      "source": "Reuters",
+      "oneLineSummary": "미국 관리가 이란-오만 간 호르무즈 해협 통행 재개 합의가 임박했다고 밝힌 가운데, 사우디·튀르키예·파키스탄이 상호방위협정을 체결했습니다.",
+      "mainContentParagraphs": [
+        "미국 관리는 금요일, 이란과 오만 사이에 호르무즈 해협을 곧 재개할 수 있는 진전이 있었다고 밝혔으며, 이는 이란과의 5개월간 이어진 미국의 전쟁으로 중단됐던 석유 수출을 회복시킬 수 있다.",
+        "\"오만과 이란 사이에 해협 관련 진전이 있으며, 우리는 곧 합의를 기대하고 있다\"고 한 미국 관리가 금요일 로이터에 말했다. \"상업 선박 운항을 지장 없이 재개한다는 합의가 발표되면, 미국은 이란 항구에 대한 봉쇄를 해제할 것이다.\"",
+        "아부다비 국영석유회사(ADNOC)는 금요일, 분쟁 시작 이후 자사 선박 15척이 호르무즈 해협을 통과하던 중 이른바 '도발받지 않은 공격'을 받았다고 밝혔다. 이 공격으로 선원 1명이 사망하고 20명이 부상당했다고 회사 측은 전했다.",
+        "역내 확전을 우려한 사우디아라비아, 파키스탄, 튀르키예는 금요일 메카에서 공동방위협정에 서명했다. 수니파 무슬림이 다수인 미국의 세 우방국 간 이 협정은 집단 억지력을 강화하기 위한 것으로, 세 나라 중 한 곳에 대한 무력 공격을 전체에 대한 공격으로 간주한다는 내용을 담고 있다."
+      ],
+      "sourceUrl": "https://www.reuters.com/world/middle-east/us-expects-deal-soon-strait-hormuz-sunni-powers-unite-defense-pact-2026-08-07/",
+      "status": "published"
     }
   ]
 };

@@ -1,29 +1,33 @@
 import { getMarketSnapshot } from './market-data.mjs';
 import { homeContent } from './content/home-content.mjs';
 import { reports } from './content/report-content.mjs';
+import { briefs } from './content/brief-content.mjs';
 import { NEWS_CATEGORIES, NEWS_INDUSTRIES, newsItems } from './content/news-content.mjs';
 import { renderHome } from './pages/home-page.mjs';
 import { createSparklineGeometry, formatMarketValue, renderMarket } from './pages/market-page.mjs';
 import { createReportPage, sortReports } from './pages/report-page.mjs';
+import { createBriefPage } from './pages/brief-page.mjs';
 import { createNewsPage } from './pages/news-page.mjs';
 
 export { createSparklineGeometry, formatMarketValue, sortReports };
 
-const PRIMARY_ROUTES = new Set(['home', 'market', 'report', 'news']);
+const PRIMARY_ROUTES = new Set(['home', 'market', 'brief', 'report', 'news']);
+const DETAIL_ROUTES = new Set(['report', 'brief']);
 
 let reportPage;
+let briefPage;
 
 export function parseRoute(hash) {
   const value = hash.replace(/^#/, '');
-  const [page, reportId] = value.split('/');
-  if (!PRIMARY_ROUTES.has(page)) return { page: 'home', reportId: null };
   const segments = value.split('/');
-  if (page !== 'report') {
-    return segments.length === 1 ? { page, reportId: null } : { page: 'home', reportId: null };
+  const page = segments[0];
+  if (!PRIMARY_ROUTES.has(page)) return { page: 'home', detailId: null };
+  if (!DETAIL_ROUTES.has(page)) {
+    return segments.length === 1 ? { page, detailId: null } : { page: 'home', detailId: null };
   }
-  if (segments.length === 1) return { page, reportId: null };
-  if (segments.length === 2 && reportId) return { page, reportId };
-  return { page: 'home', reportId: null };
+  if (segments.length === 1) return { page, detailId: null };
+  if (segments.length === 2 && segments[1]) return { page, detailId: segments[1] };
+  return { page: 'home', detailId: null };
 }
 
 function showRoute(route, updateHash = true) {
@@ -43,10 +47,10 @@ function showRoute(route, updateHash = true) {
 function renderRoute() {
   const route = parseRoute(location.hash);
   showRoute(route.page, false);
-  if (route.page === 'report' && route.reportId) {
-    reportPage.showDetail(route.reportId);
-  } else if (route.page === 'report') {
-    reportPage.showList();
+  if (route.page === 'report') {
+    route.detailId ? reportPage.showDetail(route.detailId) : reportPage.showList();
+  } else if (route.page === 'brief') {
+    route.detailId ? briefPage.showDetail(route.detailId) : briefPage.showList();
   }
 }
 
@@ -65,6 +69,11 @@ function init() {
     navigate: (route) => { location.hash = route; },
   });
   reportPage.showList();
+  briefPage = createBriefPage(document.querySelector('#brief'), {
+    briefs,
+    navigate: (route) => { location.hash = route; },
+  });
+  briefPage.showList();
   createNewsPage(document.querySelector('#news'), {
     categories: NEWS_CATEGORIES,
     industries: NEWS_INDUSTRIES,

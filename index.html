@@ -15,7 +15,7 @@
   <header class="site-header">
     <div class="header-inner">
       <button class="brand" type="button" data-route="home" aria-label="처음으로 이동"><span class="brand-mark" aria-hidden="true">AR</span><span class="brand-copy"><strong>AI Research Center</strong><small>Institutional Research</small></span></button>
-      <nav class="main-nav" aria-label="주요 메뉴"><button class="nav-link is-active" type="button" data-route="home" aria-current="page">Home</button><button class="nav-link" type="button" data-route="market">Market</button><button class="nav-link" type="button" data-route="report">Report</button><button class="nav-link" type="button" data-route="news">News</button></nav>
+      <nav class="main-nav" aria-label="주요 메뉴"><button class="nav-link is-active" type="button" data-route="home" aria-current="page">Home</button><button class="nav-link" type="button" data-route="market">Market</button><button class="nav-link" type="button" data-route="brief">Brief</button><button class="nav-link" type="button" data-route="report">Report</button><button class="nav-link" type="button" data-route="news">News</button></nav>
       <span class="header-status">V2 SAMPLE</span>
     </div>
   </header>
@@ -30,6 +30,13 @@
       <div class="shell notice" role="note"><strong>샘플 데이터</strong><span>현재 수치는 레이아웃 검증용입니다. API 연결 전이며 <b>금·유가는 V1에서 제외</b>합니다.</span></div>
       <section class="shell section-block market-overview" aria-labelledby="overview-title"><div class="section-heading compact"><div><span class="section-number">01</span><h2 id="overview-title">Market Overview</h2></div><span class="updated-at" id="market-updated">기준 시각 확인 중</span></div><div class="market-grid" id="market-grid" aria-live="polite"></div><div id="market-selection" class="market-selection" aria-live="polite"></div></section>
       <section class="shell section-block" aria-labelledby="indepth-title"><div class="section-heading compact"><div><span class="section-number">02</span><h2 id="indepth-title">Market Indepth</h2></div></div><section class="market-region" aria-labelledby="kr-market-title"><h3 id="kr-market-title">KR Market</h3><div id="market-detail-kr" class="market-detail"></div></section><section class="market-region" aria-labelledby="us-market-title"><h3 id="us-market-title">US Market</h3><div id="market-detail-us" class="market-detail"></div></section></section>
+    </section>
+    <section class="page" id="brief" data-page="brief" aria-labelledby="brief-title" hidden>
+      <div id="brief-list-view">
+        <div class="page-intro shell"><div><span class="page-kicker">Daily market note</span><h1 id="brief-title">Brief</h1></div><p>개장 전 전일 국내증시와 당일 미국증시를 정리한 증시 브리핑입니다.</p></div>
+        <section class="shell section-block" aria-labelledby="brief-list-title"><div class="section-heading compact"><div><span class="section-number">01</span><h2 id="brief-list-title">시황 노트</h2></div><span id="brief-count"></span></div><div id="brief-filters" class="report-filters news-filters" aria-label="시황 노트 필터"><label>기간 <span class="news-date-range"><input type="date" id="brief-date-from" aria-label="시작일"> ~ <input type="date" id="brief-date-to" aria-label="종료일"></span></label><label>정렬 <select id="brief-sort"><option value="newest">최신순</option><option value="oldest">오래된순</option></select></label></div><div id="brief-list" class="brief-list"></div></section>
+      </div>
+      <section id="brief-detail-view" class="shell brief-detail-view" hidden aria-live="polite"></section>
     </section>
     <section class="page" id="report" data-page="report" aria-labelledby="report-title" hidden>
       <div id="report-list-view">
