@@ -1,3 +1,5 @@
+export const NEWS_PAGE_SIZE = 10;
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -20,11 +22,33 @@ export function sortNews(items, order = 'newest') {
   return [...items].sort((a, b) => a.date.localeCompare(b.date) * direction);
 }
 
+export function buildPaginationButtons(current, totalPages) {
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }
+  if (current <= 3) {
+    return [1, 2, 3, 4, totalPages];
+  }
+  if (current >= totalPages - 2) {
+    return [1, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+  }
+  return [1, current - 1, current, current + 1, totalPages];
+}
+
 export function createNewsListController(items) {
-  const state = { category: 'all', industry: 'all', dateFrom: null, dateTo: null, order: 'newest' };
+  const state = { category: 'all', industry: 'all', dateFrom: null, dateTo: null, order: 'newest', page: 1 };
+  const getFiltered = () => sortNews(filterNews(items, state), state.order);
+  const getTotalPages = () => Math.ceil(getFiltered().length / NEWS_PAGE_SIZE);
   return {
-    getItems: () => sortNews(filterNews(items, state), state.order),
-    setFilters: (patch) => Object.assign(state, patch),
+    getItems: () => getFiltered(),
+    getPageItems: () => {
+      const start = (state.page - 1) * NEWS_PAGE_SIZE;
+      return getFiltered().slice(start, start + NEWS_PAGE_SIZE);
+    },
+    getTotalPages,
+    getPage: () => state.page,
+    setPage: (page) => { state.page = Math.min(Math.max(1, page), Math.max(1, getTotalPages())); },
+    setFilters: (patch) => { Object.assign(state, patch); state.page = 1; },
   };
 }
 
@@ -53,6 +77,17 @@ function newsItemTemplate(item) {
   </article>`;
 }
 
+function paginationHtml(current, totalPages) {
+  if (totalPages <= 1) return '';
+  const pages = buildPaginationButtons(current, totalPages);
+  const pageButtons = pages
+    .map((page) => `<button type="button" data-news-page="${page}"${page === current ? ' aria-current="page"' : ''}>${page}</button>`)
+    .join('');
+  const prevDisabled = current <= 1 ? ' disabled' : '';
+  const nextDisabled = current >= totalPages ? ' disabled' : '';
+  return `<button type="button" data-news-page="${current - 1}" class="pagination-arrow" aria-label="이전 페이지"${prevDisabled}>이전</button>${pageButtons}<button type="button" data-news-page="${current + 1}" class="pagination-arrow" aria-label="다음 페이지"${nextDisabled}>다음</button>`;
+}
+
 export function createNewsPage(root, { categories, industries, items }) {
   const controller = createNewsListController(items);
 
@@ -66,7 +101,20 @@ export function createNewsPage(root, { categories, industries, items }) {
     const count = root.querySelector('#news-count');
     count.setAttribute('aria-live', 'polite');
     count.textContent = `${filtered.length}건`;
-    root.querySelector('#news-list').innerHTML = filtered.map(newsItemTemplate).join('');
+
+    const totalPages = controller.getTotalPages();
+    const currentPage = controller.getPage();
+    const pagination = paginationHtml(currentPage, totalPages);
+    root.querySelector('#news-pagination-top').innerHTML = pagination;
+    root.querySelector('#news-pagination-bottom').innerHTML = pagination;
+
+    root.querySelector('#news-list').innerHTML = controller.getPageItems().map(newsItemTemplate).join('');
+
+    root.querySelectorAll('[data-news-page]').forEach((button) => button.addEventListener('click', () => {
+      controller.setPage(Number(button.dataset.newsPage));
+      render();
+      root.querySelector('#news-list-title')?.focus();
+    }));
 
     root.querySelectorAll('[data-news-toggle]').forEach((button) => button.addEventListener('click', () => {
       const panel = root.querySelector(`#news-detail-${button.dataset.newsToggle}`);

@@ -53,7 +53,7 @@
       </div>
       <section class="shell news-list-section" aria-labelledby="news-list-title">
         <div class="section-heading compact">
-          <div><span class="section-number">01</span><h2 id="news-list-title">News Scrap</h2></div>
+          <div><span class="section-number">01</span><h2 id="news-list-title" tabindex="-1">News Scrap</h2></div>
           <span id="news-count"></span>
         </div>
         <div id="news-filters" class="report-filters news-filters" aria-label="뉴스 필터">
@@ -62,7 +62,9 @@
           <label>기간 <span class="news-date-range"><input type="date" id="news-date-from" aria-label="시작일"> ~ <input type="date" id="news-date-to" aria-label="종료일"></span></label>
           <label>정렬 <select id="news-sort"><option value="newest">최신순</option><option value="oldest">오래된순</option></select></label>
         </div>
+        <nav id="news-pagination-top" class="pagination" aria-label="뉴스 페이지 이동 (상단)"></nav>
         <div id="news-list" class="news-list"></div>
+        <nav id="news-pagination-bottom" class="pagination" aria-label="뉴스 페이지 이동 (하단)"></nav>
       </section>
     </section>
   </main>
