@@ -12,6 +12,13 @@ export const briefData = {
       "status": "published"
     },
     {
+      "id": "b3",
+      "date": "2026.08.14",
+      "pdfUrl": "briefs/260814_증시브리핑.pdf",
+      "pdfStatus": "published",
+      "status": "published"
+    },
+    {
       "id": "b2",
       "date": "2026.08.15",
       "pdfUrl": "briefs/260815_증시브리핑.pdf",
